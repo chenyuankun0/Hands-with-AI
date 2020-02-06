@@ -1,0 +1,231 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../statics/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../statics/img/favicon.png">
+  <title>
+    Word2Vec
+  </title>
+  <!--    Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="../statics/css/nucleo-icons.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="../statics/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+</head>
+
+<body class="">
+<div class="white-content">
+  <div class="wrapper">
+    <div class="sidebar" data="blue">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+    -->
+      <div class="sidebar-wrapper">
+        <div class="logo">
+          <div class="text-center ">
+            <a href="javascript:void(0)" class="simple-text logo-normal">
+              Hand's on with AI
+            </a>
+          </div>
+        </div>
+        <ul class="nav">
+          <li>
+            <a href="./">
+              <i class="tim-icons icon-atom"></i>
+              <p style="font-size: 11px;">Home Page</p>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="tim-icons icon-chart-bar-32"></i>
+              <p style="font-size: 11px;">Numerical
+                <span class="caret"></span>
+              </p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-navbar" aria-labelledby="pagesDropdown">
+              <a class="dropdown-item" href="./cpi">Consumer Price Index</a>
+              <a class="dropdown-item" href="./ridership">Average Daily MRT Ridership</a>
+              <a class="dropdown-item" href="./house_index">HDB Resale Price Index</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="tim-icons icon-caps-small"></i>
+              <p style="font-size: 11px;">Text
+                <span class="caret"></span>
+              </p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-navbar" aria-labelledby="pagesDropdown">
+              <a class="dropdown-item" href="./word2vec">Nearest Word & Similarity</a>
+              <a class="dropdown-item" href="./text_classify">Classification</a>
+              <a class="dropdown-item" href="./summarization">Summarization</a>
+              <a class="dropdown-item" href="./nlp">Language Processing</a>
+            </div>
+          </li>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="tim-icons icon-camera-18"></i>
+              <p style="font-size: 11px;">Vision
+                <span class="caret"></span>
+              </p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-navbar" aria-labelledby="pagesDropdown">
+              <a class="dropdown-item" href="./object">Detection</a>
+              <a class="dropdown-item" href="./im_classify">Classification</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel" data="blue">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+          </div>
+          <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav ml-auto">
+              <li class="search-bar input-group">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <h2 class="form-wordinput-heading">Nearest words </h2>
+        <p> Given a word, this demo shows a list of other words that are similar
+         to it, i.e. nearby in the vector space.</p>
+        <form class="form-inline" id="similarityform" role="form" method="POST" action="{{url_for('nearest')}}">
+           <input type="text" class="form-control autocomplete" id="word" name="word" value="{{original_word}}" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
+           <button id="submitword" type="submit" class="btn btn-default btn-primary active form-control" style="margin-left: 25px;" role="button">Show nearest</button>
+        </form>
+        <br>
+        <div id="nearestresult" class="row" ></div>
+        <div class="row">
+          <div class="col-md-2">
+            <div class="alert alert-info" data-notify="container">
+              <span data-notify="message" style="white-space: pre-wrap"> {{word1}}</span>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="alert alert-info" data-notify="container">
+              <span data-notify="message" style="white-space: pre-wrap"> {{word2}}</span>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="alert alert-info" data-notify="container">
+              <span data-notify="message" style="white-space: pre-wrap"> {{word3}}</span>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="alert alert-info" data-notify="container">
+              <span data-notify="message" style="white-space: pre-wrap"> {{word4}}</span>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="alert alert-info" data-notify="container">
+              <span data-notify="message" style="white-space: pre-wrap"> {{word5}}</span>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="alert alert-info" data-notify="container">
+              <span data-notify="message" style="white-space: pre-wrap"> {{word6}}</span>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <h2 class="form-wordinput-heading">Similarity of two words </h2>
+        <p> Given two words, this demo gives the similarity value between 1 and -1.</p>
+        <form class="form-inline" id="similarityform" role="form" action="{{url_for('similarity')}}" method="POST" >
+           <input type="text" class="form-control autocomplete" name="w1" value="{{original_word1}}" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
+           <input type="text" class="form-control autocomplete" name="w2" value="{{original_word2}}" placeholder="Type in a word" style="margin-left: 25px;" autocorrect="off" autocapitalize="none"/>
+           <input type="submit" class="btn btn-default btn-primary active form-control" style="margin-left: 25px;" value="Show similarity">
+        </form>
+        <div id="similarityresult" class="row" ></div>
+        <br>
+        <div class="alert alert-info" data-notify="container">
+          <span data-notify="message" style="white-space: pre-wrap">{{similarity}}</span>
+        </div>
+       </div>
+       <footer class="footer">
+        <div class="container-fluid">
+          <div class="copyright" style="font-style: oblique;">
+            * Using Glove-300
+          </div>
+        </div>
+      </footer>
+      </div>
+    </div>
+  </div>
+
+
+  <!--   Core JS Files   -->
+  <script src="../statics/js/core/jquery.min.js"></script>
+  <script src="../statics/js/core/popper.min.js"></script>
+  <script src="../statics/js/core/bootstrap.min.js"></script>
+  <script src="../statics/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!-- Chart JS -->
+  <script src="../statics/js/plugins/chartjs.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="../statics/js/plugins/bootstrap-notify.js"></script>
+  <script>
+    $(document).ready(function() {
+      $().ready(function() {
+        $sidebar = $('.sidebar');
+        $navbar = $('.navbar');
+        $main_panel = $('.main-panel');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+        sidebar_mini_active = true;
+        white_color = false;
+
+        window_width = $(window).width();
+
+        $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
+          var $btn = $(this);
+
+          if (sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            sidebar_mini_active = false;
+            blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+          } else {
+            $('body').addClass('sidebar-mini');
+            sidebar_mini_active = true;
+            blackDashboard.showSidebarMessage('Sidebar mini activated...');
+          }
+
+          // we simulate the window Resize so the charts will get updated in realtime.
+          var simulateWindowResize = setInterval(function() {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          // we stop the simulation of Window Resize after the animations are completed
+          setTimeout(function() {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+        });
+      });
+    });
+  </script>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS &&
+      TrackJS.install({
+        token: "ee6fab19c5a04ac1a32a645abde4613a",
+        application: "black-dashboard-free"
+      });
+  </script>
+</body>
+
+</html>

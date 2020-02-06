@@ -1,0 +1,394 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../statics/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../statics/img/favicon.png">
+  <title>
+    Language Processing
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="../statics/css/nucleo-icons.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="../statics/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+</head>
+
+<body class="">
+<div class="white-content">
+  <div class="wrapper">
+    <div class="sidebar" data="blue">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+    -->
+      <div class="sidebar-wrapper">
+        <div class="logo">
+          <div class="text-center ">
+            <a href="javascript:void(0)" class="simple-text logo-normal">
+              Hand's on with AI
+            </a>
+          </div>
+        </div>
+        <ul class="nav">
+          <li>
+            <a href="./">
+              <i class="tim-icons icon-atom"></i>
+              <p style="font-size: 11px;">Home Page</p>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="tim-icons icon-chart-bar-32"></i>
+              <p style="font-size: 11px;">Numerical
+                <span class="caret"></span>
+              </p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-navbar" aria-labelledby="pagesDropdown">
+              <a class="dropdown-item" href="./cpi">Consumer Price Index</a>
+              <a class="dropdown-item" href="./ridership">Average Daily MRT Ridership</a>
+              <a class="dropdown-item" href="./house_index">HDB Resale Price Index</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="tim-icons icon-caps-small"></i>
+              <p style="font-size: 11px;">Text
+                <span class="caret"></span>
+              </p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-navbar" aria-labelledby="pagesDropdown">
+              <a class="dropdown-item" href="./word2vec">Nearest Word & Similarity</a>
+              <a class="dropdown-item" href="./text_classify">Classification</a>
+              <a class="dropdown-item" href="./summarization">Summarization</a>
+              <a class="dropdown-item" href="./nlp">Language Processing</a>
+            </div>
+          </li>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="tim-icons icon-camera-18"></i>
+              <p style="font-size: 11px;">Vision
+                <span class="caret"></span>
+              </p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-navbar" aria-labelledby="pagesDropdown">
+              <a class="dropdown-item" href="./object">Detection</a>
+              <a class="dropdown-item" href="./im_classify">Classification</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel" data="blue">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+          </div>
+          <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav ml-auto">
+              <li class="search-bar input-group">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-plain">
+              <div class="card-header">
+                <h2>Language Processing</h2>
+                  <p> Given a sentence, this demo detect it's sentiment score, entities and syntax structure.</p>
+              </div>
+              <div class="card-body">
+                <form method="POST" autocomplete="on">
+                  <input name="text" class="form-control" placeholder="Type a sentence">
+                    <br>
+                  <input type="submit" class="btn btn-fill btn-info" value="Analyze">
+                </form>
+                <br>
+                <blockquote>
+                  <p class="blockquote blockquote-info">
+                    {{original_text}}
+                  </p>
+                </blockquote>
+                <br>
+                <ul class="nav nav-tabs">
+                  <li class="active"><a data-toggle="tab" href="#home">Sentiment Analysis
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+                  <li><a data-toggle="tab" href="#menu1">Entities Analysis
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+                  <li><a data-toggle="tab" href="#menu3">Syntax Analysis
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div id="home" class="tab-pane active">
+                    <br>
+                    <div class="alert alert-info" data-notify="container">
+                      <span>{{sentiment_result}}</span>
+                    </div>
+                  </div>
+                  <div id="menu1" class="tab-pane fade">
+                    <br>
+                    <div class="table-responsive">
+                      <table class="table tablesorter " id="">
+                        <thead class=" text-primary">
+                          <tr>
+                            <th>
+                              Index
+                            </th>
+                            <th>
+                              Entity's Name
+                            </th>
+                            <th class="text-center">
+                              Entity's Class
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              1
+                            </td>
+                            <td>
+                              {{en1}}
+                            </td>
+                            <td class="text-center">
+                              {{c1}}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              2
+                            </td>
+                            <td>
+                              {{en2}}
+                            </td>
+                            <td class="text-center">
+                              {{c2}}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              3
+                            </td>
+                            <td>
+                              {{en3}}
+                            </td>
+                            <td class="text-center">
+                              {{c3}}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              4
+                            </td>
+                            <td>
+                              {{en4}}
+                            </td>
+                            <td class="text-center">
+                              {{c4}}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              5
+                            </td>
+                            <td>
+                              {{en5}}
+                            </td>
+                            <td class="text-center">
+                              {{c5}}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div id="menu2" class="tab-pane fade">
+                    <br>
+                    <div class="alert alert-info" data-notify="container">
+                      <span data-notify="message" style="white-space: pre-wrap"> {{classified_result}}</span>
+                    </div>
+                  </div>
+                  <div id="menu3" class="tab-pane fade">
+                    <br>
+                    <div class="card-header">
+                      <img id="myImg" alt="Syntax Structrue" src=" {{url_for('send_syntax_img', filename=image_name)}}" style="max-width: 100%;">
+                      <!-- The Modal -->
+                      <div id="myModal" class="modal">
+
+                        <!-- The Close Button -->
+                        <span class="close">&times;</span>
+
+                        <!-- Modal Content (The Image) -->
+                        <img class="modal-content" id="img01" src=" {{url_for('send_syntax_img', filename=image_name)}}">
+
+                        <!-- Modal Caption (Image Text) -->
+                        <div id="caption"></div>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <h5>Tagging List</h5>
+                          <ul>
+                            <li>CC - Coordinating conjunction</li>
+                            <li>CD - Cardinal number</li>
+                            <li>DT - Determiner</li>
+                            <li>EX - Existential there</li>
+                            <li>FW - Foreign word</li>
+                            <li>IN - Preposition or subordinating conjunction</li>
+                            <li>JJ - Adjective</li>
+                            <li>JJR - Adjective, comparative</li>
+                            <li>JJS - Adjective, superlative</li>
+                            <li>VBD - Verb, past tense</li>
+                            <li>VBG - Verb, gerund or present participle</li>
+                            <li>VBN - Verb, past participle</li>
+                          </ul>
+                        </div>
+                        <div class="col-md-4">
+                          <h5>Tagging List</h5>
+                          <ul>
+                            <li>LS - List item marker</li>
+                            <li>MD - Modal</li>
+                            <li>NN - Noun, singular or mass</li>
+                            <li>NNS - Noun, plural</li>
+                            <li>NNP - Proper noun, singular</li>
+                            <li>NNPS - Proper noun, plural</li>
+                            <li>PDT - Predeterminer</li>
+                            <li>POS - Possessive ending</li>
+                            <li>PRP - Personal pronoun</li>
+                            <li>VBP - Verb, non-3rd person singular present</li>
+                            <li>VBZ - Verb, 3rd person singular present</li>
+                            <li>WDT - Wh-determiner</li>
+                          </ul>
+                        </div>
+                        <div class="col-md-4">
+                          <h5>Tagging List</h5>
+                          <ul>
+                            <li>PRP$ - Possessive pronoun</li>
+                            <li>RB - Adverb</li>
+                            <li>RBR - Adverb, comparative</li>
+                            <li>RBS - Adverb, superlative</li>
+                            <li>RP - Particle</li>
+                            <li>SYM - Symbol</li>
+                            <li>TO - to</li>
+                            <li>UH - Interjection</li>
+                            <li>VB - Verb, base form</li>
+                            <li>WP - Wh-pronoun</li>
+                            <li>WP$ - Possessive wh-pronoun</li>
+                            <li>WRB - Wh-adverb</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="footer">
+        <div class="container-fluid">
+          <div class="copyright" style="font-style: oblique;">
+            * Using NLTK, Spacy and Stanford Core NLP models
+          </div>
+        </div>
+      </footer>
+      </div>
+    </div>
+  </div>
+
+  <!--   Core JS Files   -->
+  <script src="../statics/js/core/jquery.min.js"></script>
+  <script src="../statics/js/core/popper.min.js"></script>
+  <script src="../statics/js/core/bootstrap.min.js"></script>
+  <script src="../statics/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!-- Chart JS -->
+  <script src="../statics/js/plugins/chartjs.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="../statics/js/plugins/bootstrap-notify.js"></script>
+  <script>
+    $(document).ready(function() {
+      $().ready(function() {
+        $sidebar = $('.sidebar');
+        $navbar = $('.navbar');
+        $main_panel = $('.main-panel');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+        sidebar_mini_active = true;
+        white_color = false;
+
+        window_width = $(window).width();
+
+        $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
+          var $btn = $(this);
+
+          if (sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            sidebar_mini_active = false;
+            blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+          } else {
+            $('body').addClass('sidebar-mini');
+            sidebar_mini_active = true;
+            blackDashboard.showSidebarMessage('Sidebar mini activated...');
+          }
+
+          // we simulate the window Resize so the charts will get updated in realtime.
+          var simulateWindowResize = setInterval(function() {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          // we stop the simulation of Window Resize after the animations are completed
+          setTimeout(function() {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+        });
+      });
+    });
+  </script>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS &&
+      TrackJS.install({
+        token: "ee6fab19c5a04ac1a32a645abde4613a",
+        application: "black-dashboard-free"
+      });
+  </script>
+  <script>
+    // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+  </script>
+</body>
+
+</html>

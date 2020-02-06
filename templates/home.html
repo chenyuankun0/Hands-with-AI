@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../statics/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../statics/img/favicon.png">
+  <title>
+    Home Page
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="../statics/css/nucleo-icons.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="../statics/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+</head>
+
+<body class="">
+<div class="white-content">
+  <div class="wrapper">
+    <div class="sidebar" data="blue">
+      <div class="sidebar-wrapper">
+        <div class="logo">
+          <div class="text-center ">
+            <a href="javascript:void(0)" class="simple-text logo-normal">
+               Hand's on with AI
+            </a>
+          </div>
+        </div>
+        <ul class="nav">
+          <li class="active ">
+            <a href="./">
+              <i class="tim-icons icon-atom"></i>
+              <p style="font-size: 11px;">Home Page</p>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="tim-icons icon-chart-bar-32"></i>
+              <p style="font-size: 11px;">Numerical
+                <span class="caret"></span>
+              </p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-navbar" aria-labelledby="pagesDropdown">
+              <a class="dropdown-item" href="./cpi">Consumer Price Index</a>
+              <a class="dropdown-item" href="./ridership">Average Daily MRT Ridership</a>
+              <a class="dropdown-item" href="./house_index">HDB Resale Price Index</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="tim-icons icon-caps-small"></i>
+              <p style="font-size: 11px;">Text
+                <span class="caret"></span>
+              </p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-navbar" aria-labelledby="pagesDropdown">
+              <a class="dropdown-item" href="./word2vec">Nearest Word & Similarity</a>
+              <a class="dropdown-item" href="./text_classify">Classification</a>
+              <a class="dropdown-item" href="./summarization">Summarization</a>
+              <a class="dropdown-item" href="./nlp">Language Processing</a>
+            </div>
+          </li>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="tim-icons icon-camera-18"></i>
+              <p style="font-size: 11px;">Vision
+                <span class="caret"></span>
+              </p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-navbar" aria-labelledby="pagesDropdown">
+              <a class="dropdown-item" href="./object">Detection</a>
+              <a class="dropdown-item" href="./im_classify">Classification</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel", data="blue">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+          </div>
+          <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav ml-auto">
+              <li class="search-bar input-group">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-chart" style="background-image: url(https://media.licdn.com/dms/image/C4D1BAQESJZ9k9KvNAg/company-background_10000/0?e=2159024400&v=beta&t=F_FpSGJSrOMT6rJntBlAn3FThRctZy5-99szn4Na2_g);">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-12 text-center">
+                    <br>
+                    <br>
+                    <h2 style="text-align: center;">Hand's on with AI</h2>
+                    <br>
+                    <br>
+                    <h4 style="text-align: left; padding-left: 100px; padding-right: 100px;"> This is a consolidation of a variety of Machine Learning/Data Science Techniques. With this, you will be able to have first hand experience in knowing what data scientist is able to do for you. Understanding the features of its capacity will help in sculpting what the design of the solution would be.</h4>
+                    <h4>Navigate through the different models and try it out for yourself.</h4>
+                    <br>
+                    <br>
+                    <br>
+                    <a href="./cpi" class="btn btn-primary js-scroll-trigger">Get Started</a> 
+                    <br>
+                    <br> 
+                    <br>
+                    <br>
+                    <div class="row" style="padding-left: 20px; padding-right: 20px">
+                      <div class="col-md-3">
+                        <img src=" {{url_for('send_image_home', filename=image_name1)}}">
+                      </div>
+                      <div class="col-md-3">
+                        <img src=" {{url_for('send_image_home', filename=image_name2)}}">
+                      </div>
+                      <div class="col-md-3">
+                        <img src=" {{url_for('send_image_home', filename=image_name3)}}">
+                      </div>
+                      <div class="col-md-3">
+                        <img src=" {{url_for('send_image_home', filename=image_name4)}}">
+                      </div>
+                    </div>
+                    <br> 
+                  </div>
+                </div>           
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+
+
+  <!--   Core JS Files   -->
+  <script src="../statics/js/core/jquery.min.js"></script>
+  <script src="../statics/js/core/popper.min.js"></script>
+  <script src="../statics/js/core/bootstrap.min.js"></script>
+  <script src="../statics/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!-- Chart JS -->
+  <script src="../statics/js/plugins/chartjs.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="../statics/js/plugins/bootstrap-notify.js"></script>
+  <script>
+    $(document).ready(function() {
+      $().ready(function() {
+        $sidebar = $('.sidebar');
+        $navbar = $('.navbar');
+        $main_panel = $('.main-panel');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+        sidebar_mini_active = true;
+        white_color = false;
+
+        window_width = $(window).width();
+
+        $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
+          var $btn = $(this);
+
+          if (sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            sidebar_mini_active = false;
+            blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+          } else {
+            $('body').addClass('sidebar-mini');
+            sidebar_mini_active = true;
+            blackDashboard.showSidebarMessage('Sidebar mini activated...');
+          }
+
+          // we simulate the window Resize so the charts will get updated in realtime.
+          var simulateWindowResize = setInterval(function() {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          // we stop the simulation of Window Resize after the animations are completed
+          setTimeout(function() {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+        });
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in statics/js/demos.js
+      demo.initDashboardPageCharts();
+
+    });
+  </script>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS &&
+      TrackJS.install({
+        token: "ee6fab19c5a04ac1a32a645abde4613a",
+        application: "black-dashboard-free"
+      });
+  </script>
+  </div>
+</body>
+
+</html>
