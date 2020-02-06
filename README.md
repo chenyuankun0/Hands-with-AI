@@ -1,6 +1,7 @@
 # Hands-with-AI
 This is a demo website contains several basic AI use cases, such as Time Series Forecasting, Language Processing and Image Classfication. The website back-end is built on python Flask. 
-![Screenshots](http://url/to/img.png)
+
+![Screenshots](https://github.com/chenyuankun0/Hands-with-AI/blob/master/images/screenshots.jpeg)
 
 ## Installation
 The packages that you need to install are specified in 'package list' file. You should install the exactly same version of packages to run this demo.
