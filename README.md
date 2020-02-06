@@ -9,7 +9,7 @@ The packages that you need to install are specified in 'package list' file. You 
 Don't forget to also download the 'stopwords' from nltk and download the en_core_web_sm from spacy.
 
 ## How to run
-After you correctly install and download things, you can simply use command line to go to the directory and type 'flask run' or 'python app.py', and you can start to play with this demo~
+After you correctly install and download everythings, you can simply use command line to go to the directory and type 'flask run' or 'python app.py', and you can start to play with this demo~
 
 ## About me
 I'm a graduated student and a beginner to python coding, so the code in this repo may be very messy. I would be grateful if someone could give me some advice about how to improve the code writing. Thanks~
